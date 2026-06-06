@@ -75,7 +75,6 @@ Flags: `--prompt` (chat-wrapped) | `--raw` (no template) | `--ids file.i32`; `--
 `--dbgdir dir` (dump per-layer hidden states); `--dump f` (dump final_normed).
 `./build/mma_sp_test` validates the sparse Tensor-Core GEMM.
 
-
 ## Validation
 `tools/build_oracle.py` runs transformers (fp32, CPU) for a fixed prompt and dumps reference
 per-layer activations, logits, and greedy ids. The engine reproduces the oracle's greedy tokens
@@ -88,3 +87,9 @@ tokenizer matches HF `encode`/`decode` exactly on chat templates, code, numbers,
 - `src/mma_sp_test.cu`- standalone validation of the 2:4 sparse-INT4 mma.sp Tensor-Core GEMM
 - `src/tokenizer.h`   - GPT-2 byte-level BPE (encode + decode), header-only
 - `tools/`            - offline: export_weights, make_index, export_tokenizer, build_oracle
+- `kb/`               - architecture, decisions, status
+
+## Status of task 7 (done) - see kb/03_status.md
+- FP8 E4M3 KV cache, fused FlashAttention, H2O eviction: implemented on the generation path,
+  coherence-verified (above). mma.sp sparse Tensor-Core GEMM: validated as a standalone kernel,
+  kept off the generation path (2:4 on pretrained weights needs retraining to stay coherent).
