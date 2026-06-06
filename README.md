@@ -1,4 +1,4 @@
-# LFM2.5-8B-A1B pure C/CUDA inference engine
+# LFM2.5-8B-A1B pure C/C++/CUDA inference engine
 # Author: g023 (https://github.com/g023/)
 
 A self-contained CUDA inference engine for `LiquidAI/LFM2.5-8B-A1B` (hybrid conv + GQA-attention
