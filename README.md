@@ -1,6 +1,8 @@
 # LFM2.5-8B-A1B pure C/C++/CUDA inference engine
 # Author: g023 (https://github.com/g023/)
 
+**Note: I've uploaded the converted model so you can skip the prepare step (would be the ./scratch folder in this project) to https://huggingface.co/g023/LFM2.5-8B-A1B-Special/ (copy scratch folder into this project root)**
+
 A self-contained CUDA inference engine for `LiquidAI/LFM2.5-8B-A1B` (hybrid conv + GQA-attention
 MoE, 8.5B params, 1B active) targeting a single RTX 3060 (12 GB). No Python, no frameworks at
 runtime: a single `.cu` engine + a header-only byte-level BPE tokenizer. Offline preprocessing
